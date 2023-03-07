@@ -3,71 +3,29 @@
 
 [*creature-title*]Elementals
 
-[*creature-lore*]Elementals are incarnations of the elements that make up the universe: air, earth, fire, and water. Though little
+[*creature-lore*]Elementals are incarnations of the elements that make up the universe: air, earth, fire, and water. Though little more than animated energy on their own planes of existence, they can be called on by spellcasters and powerful beings to take shape and perform tasks.
 
-more than animated energy on their own planes of existence, they can be called on by spellcasters and powerful
+Living Elements. On its home plane, an elemental is a bodiless life force. Its dim consciousness manifests as a physical shape only when focused by the power of magic. A wild spirit of elemental force has no desire except to course through the element of its native plane. Like beasts of the Material Plane, these elemental spirits have no society or culture, and little sense of being.
 
-beings to take shape and perform tasks.
+Conjured by Magic. Certain spells and magic items can conjure an elemental, summoning it from the Inner Planes to the Material Plane. Elementals instinctively resent being pulled from their native planes and bound into service. A creature that summons an elemental must assert force of will to control it.
 
-Living Elements. On its home plane, an elemental is a bodiless life force. Its dim consciousness manifests as a
+Bound and Shaped. Powerful magic can bind an elemental spirit into a material template that defines a specific use and function. Invisible stalkers are air elementals bound to a specific form, in the same way that water elementals can be shaped into water weirds.
 
-physical shape only when focused by the power of magic. A wild spirit of elemental force has no desire except
-
-to course through the element of its native plane. Like beasts of the Material Plane, these elemental spirits have
-
-no society or culture, and little sense of being.
-
-Conjured by Magic. Certain spells and magic items can conjure an elemental, summoning it from the Inner
-
-Planes to the Material Plane. Elementals instinctively resent being pulled from their native planes and bound into
-
-service. A creature that summons an elemental must assert force of will to control it.
-
-Bound and Shaped. Powerful magic can bind an elemental spirit into a material template that defines a specific
-
-use and function. Invisible stalkers are air elementals bound to a specific form, in the same way that water
-
-elementals can be shaped into water weirds.
-
-The strength of the magic and materials that bind an elemental determines how well the elemental functions in
-
-a bound form. Golems are elemental spirits bound to physical forms, but weaker materials such as flesh and
-
-clay can’t bind elemental power sufficiently. Durable materials such as stone and iron require stronger magic,
-
-which consequently binds an elemental more securely.
+The strength of the magic and materials that bind an elemental determines how well the elemental functions in a bound form. Golems are elemental spirits bound to physical forms, but weaker materials such as flesh and clay can’t bind elemental power sufficiently. Durable materials such as stone and iron require stronger magic, which consequently binds an elemental more securely.
 
 Elemental Nature. An elemental doesn’t require air, food, drink, or sleep.
 
 [**creature-sub**]Air Elemental
 
-[*creature-lore*]An air elemental is a funneling cloud of whirling air with a vague semblance of a face. Although it likes to race
-
-across the ground, picking up dust and debris as it goes, it can also fly and attack from above.
-
-An air elemental can turn itself into a screaming cyclone, creating a whirlwind that batters creatures even as it
-
-flings them away.
+[*creature-lore*]An air elemental is a funneling cloud of whirling air with a vague semblance of a face. Although it likes to race across the ground, picking up dust and debris as it goes, it can also fly and attack from above. An air elemental can turn itself into a screaming cyclone, creating a whirlwind that batters creatures even as it flings them away.
 
 [*creature-size*]Large elemental, neutral
 
-[*creature-ac*]Armor Class 15
+[*creature-ac*]15
 
-[*creature-hp*]Hit Points 90 (12d10 + 24)
+[*creature-hp*]90 (12d10 + 24)
 
-[*creature-speed*]Speed 0 ft., fly 90 ft. (hover)
-
-STR
-
-DEX
-
-CON
-
-INT
-
-WIS
-
-CHA
+[*creature-speed*]0 ft., fly 90 ft. (hover)
 
 [*creature-str*]14  (+2)
 
@@ -81,53 +39,51 @@ CHA
 
 [*creature-cha*]6  (−2)
 
-[*creature-dr*]Damage Resistances lightning, thunder; bludgeoning,
+[*creature-dr*]lightning, thunder, bludgeoning, piercing, and slashing from nonmagical attacks
 
-piercing, and slashing from nonmagical attacks
+[*creature-di*]poison
 
-elemental’s space must make a DC 13 Strength saving
-throw. On a failure, a target takes 15 (3d8 + 2) bludgeoning
-damage and is flung up 20 feet away from the elemental in
-a random direction and knocked prone. If a thrown target
-strikes an object, such as a wall or floor, the target takes 3
-(1d6) bludgeoning damage for every 10 feet it was thrown.
-If the target is thrown at another creature, that creature
-must succeed on a DC 13 Dexterity saving throw or take the
-same damage and be knocked prone.
+[*creature-ci*]exhaustion, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious
 
-If the saving throw is successful, the target takes half the
-bludgeoning damage and isn’t flung away or knocked
-prone.
+[*creature-senses*]darkvision 60 ft., passive Perception 10
 
-Monsters (E) - Monster Manual - Sources - D&D Beyond
+[*creature-languages*]Auran
 
-Damage Immunities poison
+[*creature-challenge*]5 (1,800 XP)
 
-Condition Immunities exhaustion, grappled, paralyzed,
-petrified, poisoned, prone, restrained, unconscious
+[*creature-states*]Air Form. The elemental can enter a hostile creature’s space and stop there. It can move through a space as narrow as 1 inch wide without squeezing.
 
-Senses darkvision 60 ft., passive Perception 10
+[*creature-action*]Multiattack. The elemental makes two slam attacks.
 
-Languages Auran
+[*creature-attack*]Slam. 
 
-Challenge 5 (1,800 XP)
+[*creature-attack-type*]Melee Weapon Attack
 
-Air Form. The elemental can enter a hostile creature’s
-space and stop there. It can move through a space as
-narrow as 1 inch wide without squeezing.
+[*creature-attack-toHit*]+8 
 
-Actions
+[*creature-attack-reach*]5 ft.
 
-Multiattack. The elemental makes two slam attacks.
+[*creature-attack-targetNumber*]one target
 
-Slam. Melee Weapon Attack: +8 to hit, reach 5 ft., one target.
-Hit: 14 (2d8 + 5) bludgeoning damage.
+[*creature-attack-hit*]14 (2d8 + 5) 
 
-Whirlwind (Recharge 4–6). Each creature in the
+[*creature-attack-damageType*]bludgeoning damage
 
-Earth Elemental
+[*creature-attack*]Whirlwind 
 
-An earth elemental plods forward like a walking hill, club-like arms of jagged stone swinging at its sides. Its head
+[*creature-attack-charges*](Recharge 4–6)
+
+[*creature-attack-details*]Each creature in the elemental’s space must make a DC 13 Strength saving throw. On a failure, a target takes 15 (3d8 + 2) bludgeoning damage and is flung up 20 feet away from the elemental in a random direction and knocked prone. If a thrown target strikes an object, such as a wall or floor, the target takes 3 (1d6) bludgeoning damage for every 10 feet it was thrown.
+
+If the target is thrown at another creature, that creature must succeed on a DC 13 Dexterity saving throw or take the same damage and be knocked prone.
+
+If the saving throw is successful, the target takes half the bludgeoning damage and isn’t flung away or knocked prone.
+
+[**creature-sub-END**]
+
+[**creature-sub**]Earth Elemental
+
+[*creature-lore*]An earth elemental plods forward like a walking hill, club-like arms of jagged stone swinging at its sides. Its head
 
 and body consist of dirt and stone, occasionally set with chunks of metal, gems, and bright minerals.
 
@@ -137,73 +93,64 @@ fear from an earth elemental, since the elemental can pinpoint the precise locat
 
 solid ground in its vicinity.
 
-EARTH ELEMENTAL
-Large elemental, neutral
+[*creature-size*]Large elemental, neutral
 
-Armor Class 17 (natural armor)
+[*creature-ac*]Armor Class 17 (natural armor)
 
-Hit Points 126 (12d10 + 60)
+[*creature-hp*]Hit Points 126 (12d10 + 60)
 
-Speed 30 ft., burrow 30 ft.
+[*creature-speed*]Speed 30 ft., burrow 30 ft.
 
-STR
+[*creature-str*]20  (+5)
 
-DEX
+[*creature-dex*]8  (−1)
 
-CON
+[*creature-con*]20  (+5)
 
-INT
+[*creature-int*]5  (−3)
 
-WIS
+[*creature-wis*]10  (+0)
 
-CHA
+[*creature-cha*]5  (−3)
 
-20  (+5)
+[*creature-dv*]Damage Vulnerabilities thunder
 
-8  (−1)
-
-20  (+5)
-
-5  (−3)
-
-10  (+0)
-
-5  (−3)
-
-https://www.dndbeyond.com/sources/mm/monsters-e[3/5/23, 4:06:29 PM]
-
-Siege Monster. The elemental deals double damage to
-objects and structures.
-
-Actions
-
-Multiattack. The elemental makes two slam attacks.
-
-Slam. Melee Weapon Attack: +8 to hit, reach 10 ft., one
-target. Hit: 14 (2d8 + 5) bludgeoning damage.
-
-Monsters (E) - Monster Manual - Sources - D&D Beyond
-
-Damage Vulnerabilities thunder
-
-Damage Resistances bludgeoning, piercing, and slashing
+[*creature-dr*]Damage Resistances bludgeoning, piercing, and slashing
 from nonmagical attacks
 
-Damage Immunities poison
+[*creature-di*]Damage Immunities poison
 
-Condition Immunities exhaustion, paralyzed, petrified,
+[*creature-ci*]Condition Immunities exhaustion, paralyzed, petrified,
+
 poisoned, unconscious
 
-Senses darkvision 60 ft., tremorsense 60 ft.,
+[*creature-senses*]Senses darkvision 60 ft., tremorsense 60 ft.,
+
 passive Perception 10
 
-Languages Terran
+[*creature-languages*]Languages Terran
 
-Challenge 5 (1,800 XP)
+[*creature-challenge*]Challenge 5 (1,800 XP)
 
-Earth Glide. The elemental can burrow through nonmagical,
+[*creature-statesa*]Earth Glide. The elemental can burrow through nonmagical,
 unworked earth and stone. While doing so, the elemental
 doesn’t disturb the material it moves through.
+
+[*creature-states*]Siege Monster. The elemental deals double damage to
+objects and structures.
+
+[*creature-action*]Multiattack. The elemental makes two slam attacks.
+
+[*creature-attack*]Slam. Melee Weapon Attack: +8 to hit, reach 10 ft., one
+target. Hit: 14 (2d8 + 5) bludgeoning damage.
+
+
+
+
+
+
+
+
 
 Fire Elemental
 
