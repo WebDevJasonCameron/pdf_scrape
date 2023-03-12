@@ -34,18 +34,13 @@ if flag:
                 print(len(line))
                 if line.startswith("#"):
                     f.write(line + "\n")
-                    print("Hash")
                 elif possible_title(line):
                     f.write(line + "\n")
-                    print("possible_title")
                 elif line.endswith("."):
                     f.write(line)
-                    print(".")
                 else:
                     f.write(line.strip())
-                    print("line without a .")
             else:
                 continue
-                print("blank line")
 
 print("Just removed " + str(num_count) + " sentences.")
