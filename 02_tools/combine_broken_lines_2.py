@@ -31,16 +31,13 @@ if flag:
     with open(args.file, "w") as f:
         for line in lines:
             if len(line) > 1:
-                print(len(line))
                 if line.startswith("#"):
-                    f.write(line + "\n")
+                    f.write(line + " \n")
                 elif possible_title(line):
-                    f.write(line + "\n")
+                    f.write(line + " \n")
                 elif line.endswith("."):
-                    f.write(line)
+                    f.write(line + " ")
                 else:
-                    f.write(line.strip())
+                    f.write((line + " ").strip())
             else:
                 continue
-
-print("Just removed " + str(num_count) + " sentences.")
