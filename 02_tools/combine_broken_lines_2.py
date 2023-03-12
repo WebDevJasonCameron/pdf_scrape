@@ -13,7 +13,7 @@ num_count = 0
 
 def possible_title(line):
     checker = line.split(" ")
-    if len(checker) <= 3:
+    if len(checker) <= 3 and len(checker) > 0:
         return True
     else:
         return False
@@ -30,13 +30,22 @@ if flag:
 
     with open(args.file, "w") as f:
         for line in lines:
-            if line.startswith("#"):
-                f.write(line + "\n")
-            elif not line.endswith("."):
-                f.write(line.rstrip())
-            elif possible_title(line):
-                f.write(line + "\n")
+            if len(line) > 1:
+                print(len(line))
+                if line.startswith("#"):
+                    f.write(line + "\n")
+                    print("Hash")
+                elif possible_title(line):
+                    f.write(line + "\n")
+                    print("possible_title")
+                elif line.endswith("."):
+                    f.write(line)
+                    print(".")
+                else:
+                    f.write(line.strip())
+                    print("line without a .")
             else:
-                f.write(line + "\n")
+                continue
+                print("blank line")
 
 print("Just removed " + str(num_count) + " sentences.")
