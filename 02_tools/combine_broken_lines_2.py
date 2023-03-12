@@ -34,10 +34,10 @@ if flag:
                 if line.startswith("#"):
                     f.write(line + " \n")
                 elif possible_title(line):
-                    f.write(line + " \n")
+                    f.write("\n\n" + line + "\n")
                 elif line.endswith("."):
-                    f.write(line + " ")
+                    f.write(line + "  ")
                 else:
-                    f.write((line + " ").strip())
+                    f.write((" " + line).rstrip())
             else:
                 continue
