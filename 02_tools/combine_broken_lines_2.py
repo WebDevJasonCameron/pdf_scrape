@@ -13,7 +13,7 @@ num_count = 0
 
 def possible_title(line):
     checker = line.split(" ")
-    if len(checker) <= 3 and len(checker) > 0:
+    if len(checker) <= 4 and len(checker) > 0:
         return True
     else:
         return False
@@ -34,9 +34,9 @@ if flag:
                 if line.startswith("#"):
                     f.write(line + " \n")
                 elif possible_title(line):
-                    f.write("\n\n" + line + "\n")
+                    f.write(line + "\n")
                 elif line.endswith("."):
-                    f.write(line + "  ")
+                    f.write(line + "  \n")
                 else:
                     f.write((" " + line).rstrip())
             else:
