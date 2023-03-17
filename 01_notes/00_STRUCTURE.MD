@@ -7,65 +7,80 @@
 ###### CLASS Basics
 
 ```
-[*class*]             text              [/*class*/]
+[*class*]             text              [/*class*/]     or      <head>          class           </head>
 
-[**name**]            text              [/**/]
+[**name**]            text              [/**/]                  <title>         class name      </title>
 
-[**source**]          text              [/**/]
+[**source**]          text              [/**/]                  <link>          book url        </link>
 
-[**type**]            text              [/**/]
+[**ttrpg**]           text              [/**/]                  <meta id:ttrpg> game name       </meta>
 
-[**cat**]            text               [/**/]
+[**type**]            text              [/**/]                  <meta id:type>  class type       </meta>
+
+[**cat**]             text              [/**/]                  <meta id:cat>   class cat        </meta>
 ```
 
-###### LORE of CLASS
+###### LORE of the CLASS
 
 ```
-[**lore**]              text            [/**/]
+[**lore**]              text            [/**/]          or      <section id:lore> text          </section>
 
-  [**lore-quote**]    text              [/*-*/]
+[**lore-quote**]        text            [/*-*/]                 <blockquote>    text            </blockquote>
 
-      [-source]       text              [/-]
+[-source]               text            [/-]                    <figcaption>    author          <figcaption>
 
-  [**lore-title**]    text              [/*-*/]
+[**lore-details**]      text            [/*-*/]                 <article>       text            </article>
 
-  [**lore-details**]  text              [/*-*/]
+[-title]                text            [/-]                    <h1>            title           </h1>
 
-      <H1>            text              </H1>
-      <H2>            text              </H2>
-      <H3>            text              </H3>
-      <P>             text              </P>
-      <B>             text              </B>
-      <EM>            text              </EM>
-      <T>             text              </T>
+<H1>            text              </H1>
+<H2>            text              </H2>
+<H3>            text              </H3>
+<P>             text              </P>                          <p>             mult lines      </p>
+<B>             text              </B>
+<EM>            text              </EM>
+<T>             text              </T>
 ```
 
-##### ATTRIBUTES of CLASS
+###### ATTRIBUTES of the CLASS
 
 ```
 [**attr**]            text              [/**/]
 
-  [**attr-hp**]       text              [/*-*/]
+[**attr-hp**]         text              [/*-*/]
 
-    [-dice]           text              [/-]
+[-dice]               text              [/-]
 
-    [-points]         text              [/-]
+[-points]             text              [/-]
 
-    [-lvlPoints]      text              [/-]
+[-lvlPoints]          text              [/-]
 
-  [**attr-prof**]     text              [/*-*/]
+[**attr-prof**]     text              [/*-*/]
 
-    [-armor]          list              [/-]
+[-armor]              list              [/-]
 
-    [-weapons]        list              [/-]
+[-weapons]            list              [/-]
 
-    [-tools]          list              [/-]
+[-tools]              list              [/-]
 
-    [-saves]          list              [/-]
+[-saves]              list              [/-]
 
-    [-skills]         list              [/-]
+[-skills]             list              [/-]
 
-  [**attr-equip**]     text              [/*-*/]
+[**attr-equip**]     list              [/*-*/]
+```
+
+###### ABILITIES of the CLASS
+
+```
+[**abl**]             text              [/**/]
+
+[**abl-atk**]         text                [/**/]
+
+[**abl-react**]
+
+[****]
+
 ```
 
 2. Sub Classes
