@@ -13,6 +13,7 @@ args = parser.parse_args()
 
 flag = True
 line_num = 0
+file_title = ""
 
 if args.in_f == "No Input Directory Arguments provided." or args.out_p == "No Output Directory Arguments provided.":
     flag = False
@@ -22,5 +23,13 @@ if flag:
 
     target_file = open(args.in_f, "r")
 
+    # Make out file's name
     for line in target_file:
-        print(line)
+        if "#" in line:
+            file_title = line.removeprefix("# ").replace(" ", "_").rstrip()
+        elif "Start Time:" in line:
+            file_title = file_title + \
+                line.removeprefix("Start Time:").replace(
+                    ",", "").replace(" ", "_").rstrip() + ".md"
+
+    print("HERE IS OUR NEW FILE TITLE:   " + file_title)
