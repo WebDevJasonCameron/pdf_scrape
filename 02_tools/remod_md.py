@@ -18,16 +18,19 @@ file_title = ""
 if args.in_f == "No Input Directory Arguments provided." or args.out_p == "No Output Directory Arguments provided.":
     flag = False
 
-# <F> BUILD FILE NAME
-
 
 def build_file_name(read_file):
     read_file = open(read_file, "r")
+    first_hash = True
     out_title = ""
 
     for line in read_file:
         if "#" in line:
-            out_title = line.removeprefix("# ").replace(" ", "_").rstrip()
+            if first_hash:
+                out_title = line.removeprefix("# ").replace(" ", "_").rstrip()
+                first_hash = False
+            else:
+                continue
         elif "Start Time:" in line:
             out_title = out_title + "_" + \
                 line.removeprefix("Start Time:").replace(
@@ -37,7 +40,6 @@ def build_file_name(read_file):
     return out_title
 
 
-# <F> RECONSTRUCT LINE
 def reconstruct_line(line):
     part_01 = ""
     part_02 = ""
@@ -54,31 +56,34 @@ def reconstruct_line(line):
         part_02 = line_parts[1]
     return part_01 + part_02
 
-# <F> HASH TITLE
-
 
 def hash_title(file_title):
     file_title_split = file_title.split("__")
-    return file_title_split[0]
+    out_title = file_title_split[0].replace("_", " ")
+    return out_title
 
 
-# <F> WRITE FILE
 def write_final_file(read_file_path, write_file_path, file_title):
     read_file = open(read_file_path, "r")
     write_file = open(write_file_path + "/" + file_title, "w")
+    heading_line = True
 
     write_file.writelines("---\n")
 
     for line in read_file:
-        if "[" in line:
+        if "[" in line or "---" in line or "#" in line:
             continue
-        else:
+        elif ":" in line:
             write_line = reconstruct_line(line)
             write_file.writelines(write_line)
-
-    write_file.writelines("\n---\n")
-    write_file.writelines("# " + hash_title(file_title) + "\n\n")
-    write_file.writelines("### Job Duties")
+        else:
+            if heading_line:
+                write_file.writelines("\n---\n")
+                write_file.writelines("# " + hash_title(file_title) + "\n\n")
+                write_file.writelines("### Job Duties\n")
+                heading_line = False
+            else:
+                write_file.writelines(line)
 
     read_file.close()
     write_file.close()
@@ -91,7 +96,6 @@ if flag:
     write_file_path = args.out_p
 
     file_title = build_file_name(read_file_path)
-
     write_final_file(read_file_path, write_file_path, file_title)
 
 print("\nCompleted")
