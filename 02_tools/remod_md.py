@@ -54,16 +54,44 @@ def reconstruct_line(line):
         part_02 = line_parts[1]
     return part_01 + part_02
 
+# <F> HASH TITLE
+
+
+def hash_title(file_title):
+    file_title_split = file_title.split("__")
+    return file_title_split[0]
+
+
+# <F> WRITE FILE
+def write_final_file(read_file_path, write_file_path, file_title):
+    read_file = open(read_file_path, "r")
+    write_file = open(write_file_path + "/" + file_title, "w")
+
+    write_file.writelines("---\n")
+
+    for line in read_file:
+        if "[" in line:
+            continue
+        else:
+            write_line = reconstruct_line(line)
+            write_file.writelines(write_line)
+
+    write_file.writelines("\n---\n")
+    write_file.writelines("# " + hash_title(file_title) + "\n\n")
+    write_file.writelines("### Job Duties")
+
+    read_file.close()
+    write_file.close()
+
 
 if flag:
     print("Program is running...")
 
-    file_title = build_file_name(args.in_f)
+    read_file_path = args.in_f
+    write_file_path = args.out_p
 
-    read_file = open(args.in_f, "r")
+    file_title = build_file_name(read_file_path)
 
-    for line in read_file:
-        mod_line = reconstruct_line(line)
-        print(mod_line)
+    write_final_file(read_file_path, write_file_path, file_title)
 
-    print("HERE IS OUR NEW FILE TITLE:   " + file_title)
+print("\nCompleted")
