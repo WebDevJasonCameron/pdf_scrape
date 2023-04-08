@@ -13,6 +13,7 @@ args = parser.parse_args()
 
 flag = True
 file_list = ()
+file_title_list = ()
 
 if args.in_dir == "No Input Directory Arguments provided." or args.out_dir == "No Output Directory Arguments provided.":
     flag = False
@@ -22,22 +23,22 @@ def get_file_list(in_dir_path):
     return glob.glob(in_dir_path + '/*.md', recursive=True)
 
 
-def build_file_name(read_file):
+def build_file_title(read_file):
     read_file = open(read_file, "r")
     first_hash = True
     out_title = ""
 
     for line in read_file:
         if "#" in line:
-            if first_hash:
-                out_title = line.removeprefix("# ").replace(" ", "_").rstrip()
-                first_hash = False
-            else:
-                continue
-        elif "Start Time:" in line:
-            broken_line = line.split(":")
-            out_title = out_title + "__" + \
-                better_date_output(broken_line[1]) + ".md"
+            new_line = line.removeprefix("# ").replace(" ", "_").rstrip()
+            while new_line not in file_title_list:
+                num = 0
+                if new_line not in file_title_list:
+                    file_title_list.append(new_line)
+                else:
+                    num += 1
+        else:
+            break
 
     read_file.close()
     return out_title
@@ -90,17 +91,8 @@ def reconstruct_line(line):
         if "_/" in part_01:
             part_01 = part_01.replace("_/", "")
 
-        if "POC_3_1:" in part_01:
-            part_01 = "POC_3_Number"
-
         part_02 = line_parts[1]
     return part_01 + part_02
-
-
-def hash_title(file_title):
-    file_title_split = file_title.split("__")
-    out_title = file_title_split[0].replace("_", " ")
-    return out_title
 
 
 def write_final_file(read_file_path, write_file_path, file_title):
@@ -145,7 +137,7 @@ def remod_all_in_file_list(file_list, out_dir):
 if flag:
     print("Program is running...")
 
-    file_list = get_file_list(args.in_dir)
-    remod_all_in_file_list(file_list, args.out_dir)
+    # file_list = get_file_list(args.in_dir)
+
 
 print("\nCompleted")
