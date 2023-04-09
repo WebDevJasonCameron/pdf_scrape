@@ -25,7 +25,6 @@ def get_file_list(in_dir_path):
 
 def build_file_title(read_file):
     read_file = open(read_file, "r")
-    first_hash = True
     out_title = ""
 
     for line in read_file:

@@ -5,41 +5,41 @@ parser = argparse.ArgumentParser(
     description='Remodelling the notion md files to go in a obsidian doc')
 
 parser.add_argument(
-    "--in_dir", help="Targeted dir to get the md files.", default="No Input Directory Arguments provided.")
+    "--in_f", help="Targeted file.", default="No Input Directory Arguments provided.")
 parser.add_argument(
-    "--out_dir", help="Ouput dir for mod md files.", default="No Output Directory Arguments provided.")
+    "--out_p", help="Ouput dir for mod md file.", default="No Output Directory Arguments provided.")
 
 args = parser.parse_args()
 
 flag = True
-file_list = ()
-file_title_list = ()
+file_list = []
+file_title_list = []
 
-if args.in_dir == "No Input Directory Arguments provided." or args.out_dir == "No Output Directory Arguments provided.":
+if args.in_f == "No Input Directory Arguments provided." or args.out_p == "No Output Directory Arguments provided.":
     flag = False
-
-
-def get_file_list(in_dir_path):
-    return glob.glob(in_dir_path + '/*.md', recursive=True)
 
 
 def build_file_title(read_file):
     read_file = open(read_file, "r")
     first_hash = True
-    out_title = ""
+    num = 1
 
     for line in read_file:
-        if "#" in line:
+        if "#" in line and first_hash == True:
+            first_hash = False
             new_line = line.removeprefix("# ").replace(" ", "_").rstrip()
-            while new_line not in file_title_list:
-                num = 0
-                if new_line not in file_title_list:
-                    file_title_list.append(new_line)
-                else:
+
+            if new_line not in file_title_list:
+                file_title_list.append(new_line)
+            else:
+                while new_line + "_" + str(num) in file_title_list:
                     num += 1
+                file_title_list.append(new_line + "_" + str(num))
+
+    for i in file_title_list:
+        print(i)
 
     read_file.close()
-    return out_title
 
 
 def better_date_output(line):
@@ -99,6 +99,8 @@ def write_final_file(read_file_path, write_file_path, file_title):
     heading_line = True
     first_blank_line = True
 
+    hash_title = ""
+
     write_file.writelines("---\n")
 
     for line in read_file:
@@ -122,20 +124,24 @@ def write_final_file(read_file_path, write_file_path, file_title):
     write_file.close()
 
 
-def remod_all_in_file_list(file_list, out_dir):
-    write_file_path = out_dir
+def remod_all_in_file_list(file_list, out_p):
+    write_file_path = out_p
 
     for file in file_list:
         read_file_path = file
 
-        file_title = build_file_name(read_file_path)
+        file_title = build_file_title(read_file_path)
         write_final_file(read_file_path, write_file_path, file_title)
 
 
 if flag:
     print("Program is running...")
 
-    # file_list = get_file_list(args.in_dir)
+    read_file = args.in_f
+
+    build_file_title(read_file)
+
+    # file_list = get_file_list(args.in_f)
 
 
 print("\nCompleted")
