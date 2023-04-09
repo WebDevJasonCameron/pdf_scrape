@@ -12,7 +12,6 @@ parser.add_argument(
 args = parser.parse_args()
 
 flag = True
-index_position = 0
 file_list = []
 file_title_list = []
 
@@ -83,13 +82,13 @@ def reconstruct_line(line):
     line_parts = line.split(":")
 
     part_01 = line_parts[0].replace(" ", "_").replace(
-        "(1)", "").replace("(2)", "").replace("(3)", "") + ":: "
+        "(1)_", "").replace("(2)_", "").replace("(3)_", "") + ":: "
     part_02 = line_parts[1]
 
     if "Start_Date" in part_01 or "End_Date" in part_01:
-        part_02 = better_date_output(part_02)
+        part_02 = better_date_output(part_02) + "\n"
 
-    return part_01 + part_02
+    return part_01 + part_02.replace("'", "")
 
 
 def write_final_file(read_file_path, write_file_path, file_title):
@@ -100,13 +99,20 @@ def write_final_file(read_file_path, write_file_path, file_title):
     for line in read_file:
         if "[" in line or "---" in line:
             continue
-        elif "# " in line and heading_line == True:
+        elif "#" in line and heading_line == True:
             heading_line == False
             write_file.writelines(line)
-        elif "# " in line:
+            print("1")
+        elif "#" in line and heading_line == False:
             write_file.writelines("##" + line)
+            print("2")
         elif ":" in line:
             write_file.writelines(reconstruct_line(line))
+        elif "EXP" in line:
+            write_file.writelines(
+                '<small style="color:grey">' + line + '</small>')
+        else:
+            write_file.writelines(line)
 
     read_file.close()
     write_file.close()
