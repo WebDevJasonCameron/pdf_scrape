@@ -118,20 +118,32 @@ def write_final_file(read_file_path, write_file_path, file_title):
     read_file = open(read_file_path, "r")
     write_file = open(write_file_path + "/" + file_title + ".md", "w")
     heading_line = True
+    to_many_blank_lines = 0
 
     for line in read_file:
         if "[" in line or "---" in line:
             continue
-        elif "# " in line and heading_line == True:
-            heading_line == False
+        elif "#" in line and heading_line == True:
+            heading_line = False
+            to_many_blank_lines = 0
             write_file.writelines(line)
         elif "#" in line and heading_line == False:
             write_file.writelines("##" + line)
+            to_many_blank_lines = 0
         elif ":" in line:
             write_file.writelines(reconstruct_line(line) + "\n")
+            to_many_blank_lines = 0
         elif "EXP" in line:
+            write_file.writelines("---\n")
             write_file.writelines(
-                '<small style="color:grey">' + line + '</small>')
+                '<small style="color:grey">' + line + '</small>\n')
+            to_many_blank_lines = 0
+        elif "\n" == line:
+            if to_many_blank_lines <= 1:
+                write_file.writelines(line)
+                to_many_blank_lines += 1
+            else:
+                continue
         else:
             write_file.writelines(line)
 

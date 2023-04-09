@@ -100,12 +100,10 @@ def write_final_file(read_file_path, write_file_path, file_title):
         if "[" in line or "---" in line:
             continue
         elif "#" in line and heading_line == True:
-            heading_line == False
+            heading_line = False
             write_file.writelines(line)
-            print("1")
         elif "#" in line and heading_line == False:
             write_file.writelines("##" + line)
-            print("2")
         elif ":" in line:
             write_file.writelines(reconstruct_line(line))
         elif "EXP" in line:
