@@ -12,6 +12,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 flag = True
+index_position = 0
 file_list = []
 file_title_list = []
 
@@ -19,12 +20,12 @@ if args.in_f == "No Input Directory Arguments provided." or args.out_p == "No Ou
     flag = False
 
 
-def build_file_title(read_file):
-    read_file = open(read_file, "r")
+def build_file_title(read_file_path):
+    read_file_path = open(read_file_path, "r")
     first_hash = True
     num = 1
 
-    for line in read_file:
+    for line in read_file_path:
         if "#" in line and first_hash == True:
             first_hash = False
             new_line = line.removeprefix("# ").replace(" ", "_").rstrip()
@@ -36,112 +37,89 @@ def build_file_title(read_file):
                     num += 1
                 file_title_list.append(new_line + "_" + str(num))
 
-    for i in file_title_list:
-        print(i)
-
-    read_file.close()
+    read_file_path.close()
 
 
 def better_date_output(line):
     no_coma_line = line.replace(",", "")
     parts = no_coma_line.split(" ")
     day = int(parts[2].rstrip())
-    return parts[3].rstrip() + get_month_number(parts[1]).rstrip() + str("{:02d}".format(day))
+    return parts[3].rstrip() + " " + get_month_number(parts[1]).rstrip() + " " + str("{:02d}".format(day))
 
 
 def get_month_number(month):
 
     if month == "January":
-        return "_01_"
+        return "01"
     elif month == "February":
-        return "_02_"
+        return "02"
     elif month == "March":
-        return "_03_"
+        return "03"
     elif month == "April":
-        return "_04_"
+        return "04"
     elif month == "May":
-        return "_05_"
+        return "05"
     elif month == "June":
-        return "_06_"
+        return "06"
     elif month == "July":
-        return "_07_"
+        return "07"
     elif month == "August":
-        return "_08_"
+        return "08"
     elif month == "September":
-        return "_09_"
+        return "09"
     elif month == "October":
-        return "_10_"
+        return "10"
     elif month == "November":
-        return "_11_"
+        return "11"
     elif month == "December":
-        return "_12_"
+        return "12"
     else:
-        return "_Missing_"
+        return "Missing"
 
 
 def reconstruct_line(line):
     part_01 = ""
     part_02 = ""
-    if ":" in line:
-        line_parts = line.split(":")
-        part_01 = line_parts[0].replace(" ", "_") + ":"
+    line_parts = line.split(":")
 
-        if "_/" in part_01:
-            part_01 = part_01.replace("_/", "")
+    part_01 = line_parts[0].replace(" ", "_").replace(
+        "(1)", "").replace("(2)", "").replace("(3)", "") + ":: "
+    part_02 = line_parts[1]
 
-        part_02 = line_parts[1]
+    if "Start_Date" in part_01 or "End_Date" in part_01:
+        part_02 = better_date_output(part_02)
+
     return part_01 + part_02
 
 
 def write_final_file(read_file_path, write_file_path, file_title):
     read_file = open(read_file_path, "r")
-    write_file = open(write_file_path + "/" + file_title, "w")
+    write_file = open(write_file_path + "/" + file_title + ".md", "w")
     heading_line = True
-    first_blank_line = True
-
-    hash_title = ""
-
-    write_file.writelines("---\n")
 
     for line in read_file:
-        if "[" in line or "---" in line or "#" in line:
+        if "[" in line or "---" in line:
             continue
+        elif "# " in line and heading_line == True:
+            heading_line == False
+            write_file.writelines(line)
+        elif "# " in line:
+            write_file.writelines("##" + line)
         elif ":" in line:
             write_file.writelines(reconstruct_line(line))
-        elif line == "\n" and first_blank_line:
-            first_blank_line = False
-            continue
-        else:
-            if heading_line:
-                write_file.writelines("\n---\n")
-                write_file.writelines("# " + hash_title(file_title) + "\n\n")
-                write_file.writelines("### Job Duties\n")
-                heading_line = False
-            else:
-                write_file.writelines(line)
 
     read_file.close()
     write_file.close()
 
 
-def remod_all_in_file_list(file_list, out_p):
-    write_file_path = out_p
-
-    for file in file_list:
-        read_file_path = file
-
-        file_title = build_file_title(read_file_path)
-        write_final_file(read_file_path, write_file_path, file_title)
-
-
 if flag:
     print("Program is running...")
 
-    read_file = args.in_f
+    read_file_path = args.in_f
+    write_file_path = args.out_p
 
-    build_file_title(read_file)
-
-    # file_list = get_file_list(args.in_f)
+    build_file_title(read_file_path)
+    write_final_file(read_file_path, write_file_path, file_title_list[0])
 
 
 print("\nCompleted")
